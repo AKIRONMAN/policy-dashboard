@@ -1,0 +1,196 @@
+:host {
+  display: block;
+}
+
+// ─── Outer wrapper: anchors the spinner overlay ────────────────────────────
+.table-container {
+  position: relative;
+}
+
+// ─── Spinner overlay ───────────────────────────────────────────────────────
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // semi-transparent wash so skeleton rows are subtly visible beneath
+  background: color-mix(in srgb, var(--color-background, #fff) 55%, transparent);
+  backdrop-filter: blur(1.5px);
+  border-radius: 4px;
+  pointer-events: none; // header/paginator stay interactive; body is non-interactive during load anyway
+
+  ::ng-deep .table-spinner {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+// ─── Skeleton ──────────────────────────────────────────────────────────────
+::ng-deep .p-skeleton {
+  border-radius: 4px;
+}
+
+.skeleton-row > td {
+  vertical-align: middle;
+}
+
+// ─── Main table ────────────────────────────────────────────────────────────
+.policy-table {
+  width: 100%;
+  font-size: 0.875rem;
+
+  ::ng-deep {
+    // Freeze header when scrollable
+    .p-datatable-thead > tr > th {
+      background-color: var(--color-background-secondary);
+      color: var(--color-text-primary);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      padding: 1rem;
+      border-color: var(--color-border);
+      text-align: left;
+      white-space: nowrap;
+      vertical-align: middle;
+
+      p-sorticon {
+        margin-left: 0.5rem;
+      }
+    }
+
+    // Body rows
+    .p-datatable-tbody > tr {
+      border-bottom: 1px solid var(--color-border-light);
+      transition: background-color 0.15s ease;
+
+      &:nth-child(odd)  { background-color: var(--color-background); }
+      &:nth-child(even) { background-color: var(--color-surface); }
+
+      &:hover {
+        background-color: var(--color-surface-hover);
+        box-shadow: inset 0 0 0 1px var(--color-border-light);
+      }
+
+      &.p-highlight {
+        background-color: var(--color-primary-light);
+        color: var(--color-text-primary);
+        &:hover { opacity: 0.85; }
+      }
+
+      & > td {
+        padding: 0.875rem 1rem;
+        color: var(--color-text-primary);
+        border-color: var(--color-border-light);
+        vertical-align: middle;
+
+        &:first-child {
+          width: 3rem;
+          text-align: center;
+        }
+      }
+    }
+
+    // Empty state
+    .p-datatable-tbody > tr.p-datatable-emptymessage > td {
+      padding: 3rem 1rem;
+      text-align: center;
+      color: var(--color-text-secondary);
+      background-color: var(--color-background);
+    }
+
+    // Paginator
+    .p-paginator {
+      background-color: var(--color-background-secondary);
+      border-color: var(--color-border-light);
+      padding: 0.875rem 1rem;
+
+      .p-paginator-current {
+        color: var(--color-text-primary);
+        font-size: 0.875rem;
+      }
+
+      .p-paginator-page {
+        background-color: var(--color-surface);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-light);
+
+        &.p-highlight {
+          background-color: var(--color-primary);
+          border-color: var(--color-primary);
+          color: #fff;
+        }
+
+        &:hover:not(.p-highlight) {
+          background-color: var(--color-surface-hover);
+        }
+      }
+    }
+
+    // Checkboxes
+    .p-checkbox .p-checkbox-box {
+      border-color: var(--color-border);
+      &.p-highlight {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+    }
+
+    // Flag icon
+    td.flag-cell {
+      width: 3rem;
+      text-align: center;
+    }
+
+    i.pi.pi-flag.flagged-icon {
+      color: var(--color-warning, #a855f7);
+      font-size: 1.1rem;
+      cursor: default;
+      transition: transform 0.15s ease;
+      &:hover { transform: scale(1.1); }
+    }
+
+    // Status icon
+    td.status-cell {
+      text-align: center;
+    }
+
+    td.status-cell i {
+      font-size: 1.1rem;
+    }
+
+    .status-active   { color: #22c55e; }
+    .status-pending  { color: #f59e0b; }
+    .status-expired  { color: #ef4444; }
+    .status-cancelled { color: #94a3b8; }
+
+    // Sortable column hover
+    .p-sortable-column:hover {
+      background-color: var(--color-background-tertiary);
+    }
+
+    // Scrollable: remove double borders on frozen header
+    .p-datatable-scrollable .p-datatable-thead > tr > th {
+      border-bottom: 2px solid var(--color-border);
+    }
+  }
+}
+
+i.pi.pi-flag.flagged-icon {
+      color: var(--color-warning, #a855f7);
+      font-size: 1.1rem;
+      cursor: default;
+      transition: transform 0.15s ease;
+      &:hover { transform: scale(1.1); }
+    }
+
+// ─── Responsive ────────────────────────────────────────────────────────────
+@media (max-width: 1200px) {
+  .policy-table ::ng-deep {
+    .p-datatable-thead > tr > th,
+    .p-datatable-tbody > tr > td {
+      padding: 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+}

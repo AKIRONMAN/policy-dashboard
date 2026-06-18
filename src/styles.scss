@@ -1,0 +1,495 @@
+/* Global theme CSS variables */
+
+/* Light Theme (default) */
+:root,
+.light-theme {
+  /* Primary Colors */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #93c5fd;
+
+  /* Surface Colors */
+    --surface-ground: #f5f7fa;
+    --surface-card: #ffffff;
+    --surface-border: #e5e7eb;
+
+
+  /* Background Colors */
+  --color-background: #ffffff;
+  --color-background-secondary: #f3f4f6;
+  --color-background-tertiary: #e5e7eb;
+
+  /* Text Colors */
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+
+  /* Border Colors */
+  --color-border: #d1d5db;
+  --color-border-light: #e5e7eb;
+
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #0ea5e9;
+/* ✅ PROFESSIONAL MUTED SEMANTIC COLORS */
+
+/* ACTIVE (Soft Blue) */
+--color-active-base: #2f5ea8;        /* toned-down blue */
+--color-active-light: #eef3fb;       /* very light wash */
+--color-active-border: #c7d5ee;
+
+/* PENDING (Muted Amber) */
+--color-pending-base: #b7791f;
+--color-pending-light: #faf5ea;
+--color-pending-border: #ecd8b5;
+
+/* EXPIRED (Soft Red) */
+--color-expired-base: #b53c3c;
+--color-expired-light: #fbeeee;
+--color-expired-border: #e9c5c5;
+
+/* CANCELLED (Muted Purple) */
+--color-cancelled-base: #6e59a5;
+--color-cancelled-light: #f4f1fb;
+--color-cancelled-border: #d6cdef;
+
+/* FLAGGED (Deep Orange — not flashy) */
+--color-flagged-base: #b45309;
+--color-flagged-light: #fbf4ec;
+--color-flagged-border: #ecd1b3;
+
+/* PREMIUM (Subtle Teal / Finance tone) */
+--color-premium-base: #2f7d6d;
+--color-premium-light: #edf7f5;
+--color-premium-border: #c6e3dd;
+
+/* TOTAL / NEUTRAL */
+--color-total-base: #4b5563;
+--color-total-light: #f7f8fa;
+--color-total-border: #d8dce2;
+
+
+
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  --table-header-bg: #f1f5f9;  /* light gray-blue */
+  --table-header-text: #334155;
+
+}
+
+/* Dark Theme */
+.dark-theme {
+  /* Primary Colors */
+  --color-primary: #60a5fa;
+  --color-primary-dark: #3b82f6;
+  --color-primary-light: #93c5fd;
+
+  
+/* DARK SURFACES (3 LEVELS) */
+  --surface-ground: #0f172a;  /* page background */
+  --surface-card: #1e293b;   /* cards, panels */
+  --surface-elevated: #334155; /* table header, dropdown, hover */
+
+
+  /* Background Colors */
+  --color-background: #1f2937;
+  --color-background-secondary: #111827;
+  --color-background-tertiary: #0f1419;
+
+  /* Text Colors */
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #d1d5db;
+  --color-text-tertiary: #9ca3af;
+
+  /* Border Colors */
+  --color-border: #374151;
+  --color-border-light: #4b5563;
+
+  /* Status Colors */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #38bdf8;
+
+  /* ✅ PROFESSIONAL MUTED SEMANTIC COLORS (Dark Theme) */
+
+  /* ACTIVE (Muted Blue - Dark) */
+  --color-active-base: #4a7ba7;      /* muted, desaturated blue */
+  --color-active-light: #2a3f52;     /* very dark wash (subtle) */
+  --color-active-border: #5a8bb7;    /* slightly lighter than base */
+  
+  /* PENDING (Muted Amber - Dark) */
+  --color-pending-base: #8b6914;
+  --color-pending-light: #3a3218;
+  --color-pending-border: #9b7924;
+  
+  /* EXPIRED (Soft Red - Dark) */
+  --color-expired-base: #8b4545;
+  --color-expired-light: #3a2525;
+  --color-expired-border: #9b5555;
+  
+  /* CANCELLED (Muted Purple - Dark) */
+  --color-cancelled-base: #6b5a85;
+  --color-cancelled-light: #3a3248;
+  --color-cancelled-border: #7b6a95;
+  
+  /* FLAGGED (Deep Orange - Dark, not flashy) */
+  --color-flagged-base: #8b5c1f;
+  --color-flagged-light: #3a2a14;
+  --color-flagged-border: #9b6c2f;
+  
+  /* PREMIUM (Subtle Teal - Dark) */
+  --color-premium-base: #4a7569;
+  --color-premium-light: #2a3a32;
+  --color-premium-border: #5a8579;
+  
+  /* TOTAL / NEUTRAL */
+  --color-total-base: #626b7a;
+  --color-total-light: #2a3038;
+  --color-total-border: #727b8a;
+
+
+  /* Surface Colors */
+  --color-surface: #111827;
+  --color-surface-hover: #1f2937;
+  --color-surface-active: #374151;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  
+  --table-header-bg: #1e293b;  /* same family but distinct */
+  --table-header-text: #e2e8f0;
+
+}
+
+
+
+
+/* FORCE PRIMENG TO USE CUSTOM TOKENS */
+:root,
+.dark {
+  --p-primary-color: var(--color-primary);
+  --p-primary-contrast-color: #fff;
+
+  --p-surface-ground: var(--color-background);
+  --p-surface-card: var(--surface-card);
+  --p-surface-border: var(--color-border);
+
+  --p-text-color: var(--color-text-primary);
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+.p-inputtext,
+.p-dropdown,
+.p-calendar,
+.p-multiselect {
+  background: var(--surface-card) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.p-dropdown-panel,
+.p-multiselect-overlay {
+  background: var(--surface-card) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.p-datatable {
+  background: var(--surface-card) !important;
+  border-radius: 8px;
+}
+
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: var(--surface-ground) !important;
+  color: var(--color-text-primary) !important;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  //border-bottom: 1px solid var(--surface-border);
+  
+  box-shadow: var(--shadow-sm);
+}
+
+.p-datatable tbody > tr > td {
+  background: var(--surface-card) !important;
+  color: var(--color-text-primary) !important;
+  border-bottom: 1px solid var(--color-border-light) !important;
+}
+
+
+/* HOVER */
+.p-datatable tbody tr:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+
+.p-button-success {
+  background: var(--color-primary) !important;
+  border: none;
+}
+.p-datatable .p-highlight {
+  background: rgba(37, 99, 235, 0.2) !important;
+  color: var(--color-text-primary) !important;
+}
+
+
+/* FIX PRIMENG CHECKBOX */
+.p-checkbox .p-checkbox-box {
+  background: var(--surface-card) !important;
+  border: 2px solid var(--color-border) !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.p-checkbox .p-checkbox-box .p-checkbox-icon {
+  color: #ffffff !important;
+}
+
+
+.summary-card {
+  background: var(--surface-card);
+  color: var(--color-text-primary);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+.p-paginator {
+  background: var(--surface-ground) !important;  /* ✅ same as table */
+  color: var(--color-text-primary) !important;
+
+  border-top: 1px solid var(--color-border) !important;
+  border-radius: 0 0 8px 8px; /* match table */
+}
+
+.p-paginator-current {
+  color: var(--color-text-primary) !important;
+  font-size: 13px;
+}
+
+.p-paginator .p-paginator-page {
+  background: transparent;
+  color: var(--color-text-primary) !important;
+  border-radius: 6px;
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+  background: var(--color-primary) !important;
+  color: #fff;
+}
+
+.p-paginator .p-paginator-page:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+
+
+
+label {
+  background: var(--surface-card) !important;
+  color: var(--color-text-primary) !important;
+}
+
+
+.p-dropdown-label,
+.p-multiselect-label {
+  color: var(--color-text-primary) !important;
+}
+
+
+.p-dropdown-trigger,
+.p-dropdown-clear-icon {
+  color: var(--color-text-primary) !important;
+}
+
+
+.p-multiselect-label-container {
+  color: var(--color-text-primary) !important;
+}
+
+.p-multiselect-token,
+.p-multiselect-label {
+  color: var(--color-text-primary) !important;
+}
+
+
+/* ============================================
+   STATUS BADGE STYLES (TABLE)
+   ============================================ */
+
+//* ✅ MODERN PROFESSIONAL BADGE (MATCH IMAGE STYLE) */
+@mixin status-badge-base($base-color) {
+  background-color: $base-color !important;  /* ✅ soft fill */
+  color: rgba($base-color, 0.95) !important;             /* ✅ readable text */
+
+  border: 1px solid rgba($base-color, 0.25) !important;             /* ✅ subtle border */
+
+  padding: 0.32rem 0.7rem;
+  //border-radius: 999px;                                  /* ✅ pill shape */
+
+  font-size: 0.7rem;
+  font-weight: 500;                                      /* ✅ not too bold */
+  text-transform: capitalize;                            /* ✅ softer look */
+  letter-spacing: 0.2px;
+
+  display: inline-flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  transition: all 0.15s ease;
+
+  /* ✅ subtle hover */
+  &:hover {
+    background-color: rgba($base-color, 0.18);
+    //border-color: rgba($base-color, 0.35);
+  }
+}
+.status-active {
+  @include status-badge-base(var(--color-active-base));
+}
+
+.status-pending {
+  @include status-badge-base(var(--color-pending-base));
+}
+
+.status-expired {
+  @include status-badge-base(var(--color-expired-base));
+}
+
+.status-cancelled {
+  @include status-badge-base(var(--color-cancelled-base));
+}
+
+.status-flagged {
+  @include status-badge-base(var(--color-flagged-base));
+}
+
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+
+.p-dropdown-panel,
+.p-multiselect-overlay {
+  background: var(--surface-card) !important;
+  color: var(--color-text-primary) !important;
+}
+
+
+body .p-multiselect-overlay,
+body .p-dropdown-panel {
+  background: var(--surface-card) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+
+
+body .p-multiselect-overlay 
+  .p-multiselect-option {
+    background: transparent !important;
+  color: var(--text-color) !important;
+  padding: 10px 12px;
+}
+
+
+
+body .p-multiselect-overlay 
+  .p-multiselect-option.p-focus, .p-multiselect-overlay 
+  .p-multiselect-option.p-multiselect-option-selected {
+  background: rgba(37, 99, 235, 0.12) !important;
+  color: var(--text-color) !important;
+}
+
+body .p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
+  background: rgba(37, 99, 235, 0.1) !important;
+}
+
+
+body .p-multiselect-option {
+  background: transparent !important;
+}
+/* ✅ PRIMARY */
+.p-button-primary {
+  background: #2563eb !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+/* ✅ INFO */
+.p-button-info {
+  background: #3b82f6 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+/* ✅ WARNING */
+.p-button-warning {
+  background: #f59e0b !important;
+  border: none !important;
+  color: #000000 !important;
+}
+
+
+body
+  .p-checkbox.p-checkbox-checked 
+  .p-checkbox-icon {
+
+  color: var(--color-primary) !important;  /* ✅ blue tick */
+  font-weight: bold;
+}
+
+
+
+
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,316 @@
+:host {
+  display: block;
+}
+
+/* ✅ CONTROLS */
+.summary-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.summary-toggle-btn {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* ✅ WRAPPER - match filter background */
+.summary-wrapper {
+  animation: slideIn 0.3s ease-out;
+  margin-bottom: 1rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    overflow: visible;
+  }
+}
+
+.summary-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ✅ MAIN CARD */
+.summary-card {
+  background: var(--color-surface);  /* ✅ MATCH FILTER */
+  border: 1px solid var(--surface-border); /* ✅ softer */
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* ✅ subtle professional */
+}
+
+/* ✅ HEADER */
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+
+  span {
+    font-size: 1.2rem; 
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+
+  strong {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+}
+
+/* =====================================
+   ✅ GRID (SPACING FIX ❗)
+===================================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;  /* ✅ spacing FIX */
+}
+
+/* =====================================
+   ✅ COMMON CARD STYLE
+===================================== */
+
+.metric-card,
+.lob-card {
+  border-radius: 10px;
+  padding: 0.75rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+  border: 1px solid var(--surface-border); /* ✅ subtle border */
+  background: var(--surface-card); /* ✅ base fallback */
+
+  transition: all 0.2s ease;
+}
+
+/* ✅ SKELETON CARD STYLES */
+.metric-card p-skeleton,
+.lob-card p-skeleton {
+  margin: 0.15rem 0 !important;
+  display: block !important;
+  background-color: var(--surface-ground) !important;
+  border-radius: 4px !important;
+  min-height: 14px !important;
+}
+
+:host ::ng-deep .p-skeleton {
+  background-color: var(--surface-ground);
+}
+
+.metric-card:hover,
+.lob-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ✅ ICON */
+.metric-card i {
+  font-size: 1.5rem;
+}
+
+/* ✅ LABEL */
+.card-label {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+/* ✅ VALUE */
+.card-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* =====================================
+   🎨 ✅ FIX: ALL STATUS COLORS (IMPORTANT)
+===================================== */
+
+/* ✅ ACTIVE */
+.metric-active {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.25);
+
+  i { color: #22c55e; }
+}
+
+/* ✅ PENDING */
+.metric-pending {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+
+  i { color: #fbbf24; }
+}
+
+/* ✅ EXPIRED */
+.metric-expired {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+
+  i { color: #ef4444; }
+}
+
+/* ✅ CANCELLED */
+.metric-cancelled {
+  background: rgba(148, 163, 184, 0.15);
+  border-color: rgba(148, 163, 184, 0.25);
+
+  i { color: #94a3b8; }
+}
+
+/* ✅ FLAGGED */
+.metric-flagged {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.25);
+
+  i { color: #a855f7; }
+}
+
+/* ✅ EXPIRING */
+.metric-expiring {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+
+  i { color: #3b82f6; }
+}
+
+/* =====================================
+   ✅ PREMIUM CARDS (MATCH SAME STYLE)
+===================================== */
+
+.lob-card {
+  background: rgba(255,255,255,0.04);
+}
+
+
+.lob-card .card-label {
+  font-size: 0.95rem;  /* ⬆ clearer label */
+  font-weight: 500;
+}
+
+.lob-card .card-value {
+  font-size: 1.35rem;  /* ⬆ strong value */
+  font-weight: 700;
+}
+
+.card-value,
+.summary-header strong {
+  letter-spacing: 0.5px;
+}
+
+
+/* =====================================
+   ✅ LOB COLORS (ENUM BASED ✅)
+===================================== */
+/* =====================================/* LOB ICON COLORS (DARK + CLEAN)
+===================================== */
+
+.lob-aviation i {
+  color: #3b82f6; /* blue */
+}
+
+.lob-casualty i {
+  color: #f59e0b; /* amber */
+}
+
+.lob-health i {
+  color: #ef4444; /* red (heart ❤️) */
+}
+
+.lob-marine i {
+  color: #6366f1; /* indigo */
+}
+
+.lob-property i {
+  color: #22c55e; /* green */
+}
+
+.lob-life i {
+  color: #ec4899; /* pink */
+}
+
+
+/* ✅ SUMMARY TOGGLE BUTTON *//* ✅ SUMMARY TO-controls */
+
+.summary-controls .p-button {
+  background: var(--surface-card);            /* ✅ no bright color */
+  border: 1px solid var(--surface-border);    /* ✅ subtle border */
+  color: var(--text-color-secondary);         /* ✅ muted icon */
+  
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.2s ease;
+}
+
+/* ✅ ICON */
+.summary-controls .p-button i {
+  font-size: 1rem;
+}
+
+/* ✅ HOVER (SUBTLE, NOT LOUD) */
+.summary-controls .p-button:hover {
+  background: var(--surface-hover);
+  color: var(--text-color);                  /* slightly stronger */
+  border-color: var(--surface-border);
+}
+
+/* ✅ ACTIVE STATE */
+.summary-controls .p-button:active {
+  transform: scale(0.96);
+}
+
+/* ✅ WHEN DISABLED / HIDDEN STATE */
+.summary-controls .p-button.inactive {
+  opacity: 0.6;
+}
+
+
+
+
+/* =====================================
+   ✅ RESPONSIVE
+===================================== */
+
+@media (max-width: 1024px) {
+  .summary-container {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-wrapper {
+    animation: slideInMobile 0.3s ease-out;
+  }
+
+  @keyframes slideInMobile {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<section class="filter-panel" aria-label="Policy filters" [formGroup]="form">
+  <div class="filter-panel__field filter-panel__field--search">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="policy-search"
+        type="search"
+        formControlName="search"
+        aria-label="Search policies"
+        autocomplete="off"
+      />
+      <label for="policy-search">Search</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="filter-panel__field">
+    <p-floatlabel variant="on">
+      <p-multiselect
+        inputId="policy-status-filter"
+        [options]="statusOptions"
+        formControlName="statuses"
+        optionLabel="label"
+        optionValue="value"
+        display="chip"
+        [showClear]="true"
+        ariaLabel="Filter by status"
+      />
+      <label for="policy-status-filter">Status</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="filter-panel__field">
+    <p-floatlabel variant="on">
+      <p-multiselect
+        inputId="policy-region-filter"
+        [options]="regionOptions"
+        formControlName="regions"
+        optionLabel="label"
+        optionValue="value"
+        display="chip"
+        [showClear]="true"
+        ariaLabel="Filter by region"
+      />
+      <label for="policy-region-filter">Region</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="filter-panel__field">
+    <p-floatlabel variant="on">
+      <p-multiselect
+        inputId="policy-lob-filter"
+        [options]="lineOfBusinessOptions"
+        formControlName="linesOfBusiness"
+        optionLabel="label"
+        optionValue="value"
+        display="chip"
+        [showClear]="true"
+        ariaLabel="Filter by line of business"
+      />
+      <label for="policy-lob-filter">Line of Business</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="filter-panel__field filter-panel__field--date">
+    <p-floatLabel variant="on">
+        <p-datepicker 
+            id="policy-effective-date-range" 
+            formControlName="effectiveDateRange" 
+            selectionMode="range" 
+            dateFormat="yy-mm-dd"
+            [showIcon]="true" 
+            [showButtonBar]="true"
+            appendTo="body"
+            ariaLabel="Filter by effective date range" />
+        <label for="policy-effective-date-range">Effective Date Range</label>
+    </p-floatLabel>
+</div>
+
+  <div class="filter-panel__field filter-panel__field--actions">
+    @if (hasFiltersApplied()) {
+      <p-button
+        label="Clear Filters"
+        icon="pi pi-times"
+        [text]="true"
+        severity="secondary"
+        (onClick)="onClearClick()"
+        aria-label="Clear all applied filters"
+      />
+    }
+  </div>
+</section>

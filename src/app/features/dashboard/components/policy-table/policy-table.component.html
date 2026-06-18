@@ -1,0 +1,143 @@
+<div class="table-container">
+
+  @if (loading()) {
+    <div class="loading-overlay" role="status" aria-label="Loading policies">
+      <p-progressSpinner
+        strokeWidth="3"
+        styleClass="table-spinner"
+        ariaLabel="Loading policies" />
+    </div>
+  }
+
+  <p-table
+    [value]="loading() ? skeletonRows : $any(policies())"
+    role="table"
+    aria-label="Policy table"
+    dataKey="id"
+    [lazy]="true"
+    [paginator]="true"
+    [rows]="pagination().pageSize"
+    [totalRecords]="pagination().totalItems"
+    [first]="(pagination().page - 1) * pagination().pageSize"
+    [rowsPerPageOptions]="[10, 25, 50, 100]"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} policies"
+    selectionMode="multiple"
+    [metaKeySelection]="false"
+    [(selection)]="selectedPolicies"
+    [sortField]="sortField()"
+    [sortOrder]="sortOrder()"
+    (onPage)="onPageChange($event)"
+    (onSort)="onSortChange($event)"
+    (selectionChange)="onSelectionChange($event)"
+    styleClass="policy-table"
+    [tableStyleClass]="'p-datatable-striped p-datatable-hoverable'"
+    [scrollable]="true"
+    scrollHeight="520px">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem" scope="col">
+          <p-tableHeaderCheckbox ariaLabel="Select all policies on this page" />
+        </th>
+        <th style="width: 3rem" scope="col"></th>
+        <th pSortableColumn="policyNumber" scope="col">
+          Policy #
+          <p-sortIcon field="policyNumber" />
+        </th>
+        <th pSortableColumn="policyholderName" scope="col">
+          Policyholder
+          <p-sortIcon field="policyholderName" />
+        </th>
+        <th pSortableColumn="lineOfBusiness" scope="col">
+          Line of Business
+          <p-sortIcon field="lineOfBusiness" />
+        </th>
+        <th pSortableColumn="status" scope="col">
+          Status
+          <p-sortIcon field="status" />
+        </th>
+        <th pSortableColumn="premiumAmount" scope="col">
+          Premium
+          <p-sortIcon field="premiumAmount" />
+        </th>
+        <th pSortableColumn="currency" scope="col">
+          Currency
+          <p-sortIcon field="currency" />
+        </th>
+        <th pSortableColumn="effectiveDate" scope="col">
+          Effective
+          <p-sortIcon field="effectiveDate" />
+        </th>
+        <th pSortableColumn="expiryDate" scope="col">
+          Expiry
+          <p-sortIcon field="expiryDate" />
+        </th>
+        <th pSortableColumn="region" scope="col">
+          Region
+          <p-sortIcon field="region" />
+        </th>
+        <th pSortableColumn="underwriter" scope="col">
+          Underwriter
+          <p-sortIcon field="underwriter" />
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+      @if (loading()) {
+        <tr class="skeleton-row">
+          <td><p-skeleton width="16px" height="16px" borderRadius="3px" /></td>
+          <td><p-skeleton width="16px" height="16px" borderRadius="3px" /></td>
+          <td><p-skeleton width="80%" height="14px" /></td>
+          <td><p-skeleton width="70%" height="14px" /></td>
+          <td><p-skeleton width="60%" height="14px" /></td>
+          <td class="status-cell"><p-skeleton width="18px" height="18px" shape="circle" /></td>
+          <td><p-skeleton width="65%" height="14px" /></td>
+          <td><p-skeleton width="40px" height="14px" /></td>
+          <td><p-skeleton width="65%" height="14px" /></td>
+          <td><p-skeleton width="65%" height="14px" /></td>
+          <td><p-skeleton width="70%" height="14px" /></td>
+          <td><p-skeleton width="60%" height="14px" /></td>
+        </tr>
+      } @else {
+        <tr [pSelectableRow]="rowData">
+          <td>
+            <p-tableCheckbox
+              [value]="rowData"
+              [ariaLabel]="'Select policy ' + rowData.policyNumber" />
+          </td>
+          <td class="flag-cell">
+            @if (rowData.flaggedForReview) {
+              <i class="pi pi-flag flagged-icon" title="Flagged for review"></i>
+            }
+          </td>
+          <td><span class="policy-number">{{ rowData.policyNumber }}</span></td>
+          <td>{{ rowData.policyholderName }}</td>
+          <td>{{ rowData.lineOfBusiness | titlecase }}</td>
+          <td class="status-cell">
+            <i class="pi" [ngClass]="getStatusIcon(rowData.status)" [title]="rowData.status"></i>
+          </td>
+          <td>{{ rowData.currency }} {{ rowData.premiumAmount | number: '1.2-2' }}</td>
+          <td style="text-align: center">{{ rowData.currency }}</td>
+          <td>{{ rowData.effectiveDate | date: 'mediumDate' }}</td>
+          <td>{{ rowData.expiryDate | date: 'mediumDate' }}</td>
+          <td>{{ rowData.region }}</td>
+          <td>{{ rowData.underwriter }}</td>
+        </tr>
+      }
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="12">
+          <div style="text-align: center; padding: 2rem 0; color: var(--color-text-secondary);">
+            No policies found. Try adjusting filters.
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+</div>

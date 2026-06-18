@@ -1,0 +1,151 @@
+<div class="summary-controls">
+  <button
+    class="summary-toggle-btn"
+    pButton
+    type="button"
+    class="p-button-text"
+    [icon]="isSummaryVisible() ? 'pi pi-eye-slash' : 'pi pi-eye'"
+    (click)="toggleSummary()"
+    [attr.aria-label]="isSummaryVisible() ? 'Hide summary' : 'Show summary'"
+    [attr.aria-pressed]="isSummaryVisible()"
+  ></button>
+</div>
+
+@if (isSummaryVisible()) {
+  @if (loading()) {
+    <section class="summary-wrapper">
+
+      <div class="summary-container">
+
+        <!-- ✅ POLICIES SKELETON -->
+        <div class="summary-card">
+
+          <div class="summary-header">
+            <div class="header-left">
+              <i class="pi pi-chart-bar"></i>
+              <span>Total Policies</span>
+            </div>
+            <p-skeleton width="80px" height="28px"></p-skeleton>
+          </div>
+
+          <div class="card-grid">
+
+            @for (item of skeletonPoliciesSlots; track item) {
+              <div class="metric-card">
+                <p-skeleton width="24px" height="24px"></p-skeleton>
+                <p-skeleton width="60%" height="14px"></p-skeleton>
+                <p-skeleton width="50%" height="20px"></p-skeleton>
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+        <!-- ✅ PREMIUM SKELETON -->
+        <div class="summary-card">
+
+          <div class="summary-header">
+            <div class="header-left">
+              <i class="pi pi-wallet"></i>
+              <span>Total Premium</span>
+            </div>
+            <p-skeleton width="100px" height="28px"></p-skeleton>
+          </div>
+
+          <div class="card-grid">
+
+            @for (item of skeletonLobSlots; track item) {
+              <div class="lob-card">
+                <p-skeleton width="24px" height="24px"></p-skeleton>
+                <p-skeleton width="65%" height="14px"></p-skeleton>
+                <p-skeleton width="70%" height="20px"></p-skeleton>
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  } @else {
+    <section class="summary-wrapper">
+
+      <div class="summary-container">
+
+        <!-- ✅ POLICIES CARD -->
+        <div class="summary-card">
+
+          <div class="summary-header">
+            <div class="header-left">
+              <i class="pi pi-chart-bar"></i>
+              <span>Total Policies</span>
+            </div>
+            <strong>{{ summary().totalPolicies }}</strong>
+          </div>
+
+          <div class="card-grid">
+
+            @for (metric of metrics; track metric.key) {
+              <div class="metric-card" [ngClass]="metric.class">
+
+                <i class="pi" [class]="metric.icon"></i>
+
+                <span class="card-label">
+                  {{ metric.label }}
+                </span>
+
+                <span class="card-value">
+                  {{ summary()[metric.key] ?? 0 }}
+                </span>
+
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+        <!-- ✅ PREMIUM CARD -->
+        <div class="summary-card">
+
+          <div class="summary-header">
+            <div class="header-left">
+              <i class="pi pi-wallet"></i>
+              <span>Total Premium</span>
+            </div>
+            <strong>
+              {{ summary().totalPremium | compactCurrency: summary().currency: 1 }}
+            </strong>
+          </div>
+
+          <div class="card-grid">
+
+            @for (item of summary().lobPremiumMap | keyvalue; track item.key) {
+              <div class="lob-card {{lobClass[item.key]}}">
+                
+                <i class="pi" [class]="lobIcons[item.key]">
+                </i>
+
+                <span class="card-label">
+                  {{ item.key | titlecase }}
+                </span>
+
+                <span class="card-value">
+                  {{ item.value | compactCurrency: summary().currency: 1 }}
+                </span>
+
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  }
+}
