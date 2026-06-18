@@ -16,6 +16,7 @@ An Angular 19 single-page application for managing APAC insurance policies. Prov
 
 ---
 
+
 ## What the App Does
 
 The dashboard manages 210 APAC insurance policies across six regions (Japan, Singapore, Australia, Hong Kong, South Korea, Thailand). Key capabilities:
